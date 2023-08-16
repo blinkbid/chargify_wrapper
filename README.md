@@ -5,7 +5,7 @@
 ## Bundle gem
 
 ```
-gem build chargify_wrapper.gem
+gem build chargify_wrapper.gemspec
 ```
 
 ## Gem setup
@@ -13,6 +13,6 @@ gem build chargify_wrapper.gem
 ```ruby
 ChargifyWrapper.configure do |config|
   config.subdomain = 'your-local-subdomain'
-  config.api_key = 'your-local-api-key
+  config.api_key = 'your-local-api-key'
 end
 ```
