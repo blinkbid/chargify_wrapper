@@ -7,13 +7,13 @@ module ChargifyWrapper
     def configure
       yield self
 
-      self.subdomain = subdomain || 'test'
+      self.subdomain = subdomain || "test"
       self.api_key = api_key
 
       Base.site = "https://#{subdomain}.chargify.com"
       Base.user = api_key
-      Base.password = 'X'
-      Base.format = 'application/json'
+      Base.password = "X"
+      Base.format = "application/json"
     end
   end
 end
