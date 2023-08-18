@@ -24,5 +24,10 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency('activeresource', '~> 6.0')
+  spec.add_runtime_dependency("rspec", "~> 3.0")
+  spec.add_runtime_dependency("rubocop", "~> 1.52")
+  spec.add_runtime_dependency("standard", "~> 1.25")
+  spec.add_runtime_dependency("rubocop-performance", "~> 1.18")
+  spec.add_runtime_dependency("rubocop-rspec", "~> 2.23")
+  spec.add_runtime_dependency("activeresource", "~> 6.0")
 end

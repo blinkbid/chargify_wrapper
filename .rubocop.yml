@@ -1,13 +1,24 @@
-AllCops:
-  TargetRubyVersion: 2.6
+require:
+  - standard
+  - rubocop-performance
+  - rubocop-rspec
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
-
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+inherit_gem:
+  standard: config/base.yml
 
 Layout/LineLength:
-  Max: 120
+  Max: 80
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - public/**/*
+    - vendor/**/*
+
+Performance:
+  Enabled: true
+RSpec:
+  Enabled: true
+RSpec/DescribeClass:
+  Enabled: false
