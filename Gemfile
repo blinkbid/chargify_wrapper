@@ -13,4 +13,7 @@ group :test do
 
   #WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
   gem "webmock", "~> 3.18"
+
+  #Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
+  gem "vcr"
 end
