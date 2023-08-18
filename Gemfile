@@ -6,3 +6,11 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
+
+group :test do
+  #Autoload dotenv in Rails.
+  gem "dotenv-rails", "~> 2.8"
+
+  #WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
+  gem "webmock", "~> 3.18"
+end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "chargify_wrapper"
+require 'webmock/rspec'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -13,3 +14,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+WebMock.disable_net_connect!
