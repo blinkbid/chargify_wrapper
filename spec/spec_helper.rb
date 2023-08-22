@@ -5,6 +5,7 @@ require 'webmock/rspec'
 require 'rubygems'
 require 'test/unit'
 require 'vcr'
+require 'dotenv/load'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -26,6 +27,6 @@ VCR.configure do |config|
 end
 
 ChargifyWrapper.configure do |config|
-  config.subdomain = ENV['SUBDOMAIN']
-  config.api_key = ENV['API_KEY']
+  config.subdomain = ENV["SUBDOMAIN"]
+  config.api_key = ENV["API_KEY"]
 end

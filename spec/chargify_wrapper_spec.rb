@@ -2,6 +2,6 @@
 
 RSpec.describe ChargifyWrapper do
   it "has a version number" do
-    expect(ChargifyWrapper::VERSION).not_to be_nil
+    expect(ChargifyWrapper::VERSION).to eql('0.1.0')
   end
 end
