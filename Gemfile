@@ -8,12 +8,12 @@ gemspec
 gem "rake", "~> 13.0"
 
 group :test do
-  #Autoload dotenv in Rails.
+  # Autoload dotenv in Rails.
   gem "dotenv-rails", "~> 2.8"
 
-  #WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
+  # WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
   gem "webmock", "~> 3.18"
 
-  #Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
+  # Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
   gem "vcr"
 end
