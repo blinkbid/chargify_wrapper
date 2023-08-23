@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://blinkbid-local-larissa.chargify.com/subscriptions/new/delayed_cancel.json
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"cancellation_message":null,"reason_code":null}}'
+    headers:
+      Authorization:
+      - Basic UDEyTmNDSWFJVXRvMk5lTzBmNTE3NWVURWl1OW14Wk5KSjVHZVV0bzpY
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache, no-store
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 22 Aug 2023 22:51:21 GMT
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 404 Not Found
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 4e8c0574-2382-4672-b4f6-f04d28bb8c73
+      X-Runtime:
+      - '0.021988'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 22 Aug 2023 22:51:21 GMT
+recorded_with: VCR 6.2.0
