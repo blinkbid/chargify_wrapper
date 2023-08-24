@@ -22,3 +22,5 @@ RSpec:
   Enabled: true
 RSpec/DescribeClass:
   Enabled: false
+RSpec/FilePath:
+  Enabled: false
