@@ -4,6 +4,6 @@ require "spec_helper"
 
 RSpec.describe ChargifyWrapper do
   it "has a version number" do
-    expect(ChargifyWrapper::VERSION).to eql("0.1.1")
+    expect(ChargifyWrapper::VERSION).to eql("0.2.0")
   end
 end
