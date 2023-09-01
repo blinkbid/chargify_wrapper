@@ -10,7 +10,7 @@ module ChargifyWrapper
           cancellation_message: attrs[:reason],
           reason_code: attrs[:code]
         }
-      }.to_json)
+      }.to_xml)
     end
   end
 end
