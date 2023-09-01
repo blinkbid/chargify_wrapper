@@ -2,15 +2,22 @@
 http_interactions:
 - request:
     method: post
-    uri: https://blinkbid-local-larissa.chargify.com/subscriptions/new/delayed_cancel.json
+    uri: https://blinkbid-local-larissa.chargify.com/subscriptions/new/delayed_cancel.xml
     body:
       encoding: UTF-8
-      string: '{"subscription":{"cancellation_message":null,"reason_code":null}}'
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <hash>
+          <subscription>
+            <cancellation-message nil="true"/>
+            <reason-code nil="true"/>
+          </subscription>
+        </hash>
     headers:
       Authorization:
       - Basic UDEyTmNDSWFJVXRvMk5lTzBmNTE3NWVURWl1OW14Wk5KSjVHZVV0bzpY
       Content-Type:
-      - application/json
+      - application/xml
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,9 +32,9 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Content-Type:
-      - application/json
+      - application/xml
       Date:
-      - Tue, 22 Aug 2023 22:51:21 GMT
+      - Fri, 01 Sep 2023 20:07:49 GMT
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Server:
@@ -45,9 +52,9 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger(R) Enterprise
       X-Request-Id:
-      - 4e8c0574-2382-4672-b4f6-f04d28bb8c73
+      - b48d690a-b3f8-444d-b669-e225e102fe58
       X-Runtime:
-      - '0.021988'
+      - '0.024109'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -57,5 +64,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Tue, 22 Aug 2023 22:51:21 GMT
+  recorded_at: Fri, 01 Sep 2023 20:07:47 GMT
 recorded_with: VCR 6.2.0

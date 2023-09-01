@@ -2,17 +2,32 @@
 http_interactions:
 - request:
     method: post
-    uri: https://blinkbid-local-larissa.chargify.com/subscriptions.json
+    uri: https://blinkbid-local-larissa.chargify.com/subscriptions.xml
     body:
       encoding: UTF-8
-      string: '{"subscription":{"product_handle":"lite-annual-trial","customer_attributes":{"first_name":"Chargify","last_name":"Wrapper","email":"Chargify@example.com","zip":"02120","state":"MA","reference":"XYZ","phone":"(617)
-        111 - 0000","organization":"BlinkBid","country":"US","city":"Boston","address_2":null,"address":"123
-        Mass Ave."}}}'
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <subscription>
+          <product-handle>lite-annual-trial</product-handle>
+          <customer-attributes>
+            <first-name>Chargify</first-name>
+            <last-name>Wrapper</last-name>
+            <email>chargify@example.com</email>
+            <zip>02120</zip>
+            <state>MA</state>
+            <phone>(617) 111 - 0000</phone>
+            <organization>BlinkBid</organization>
+            <country>US</country>
+            <city>Boston</city>
+            <address-2 nil="true"/>
+            <address>123 Mass Ave.</address>
+          </customer-attributes>
+        </subscription>
     headers:
       Authorization:
       - Basic UDEyTmNDSWFJVXRvMk5lTzBmNTE3NWVURWl1OW14Wk5KSjVHZVV0bzpY
       Content-Type:
-      - application/json
+      - application/xml
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -27,13 +42,13 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Content-Type:
-      - application/json; charset=utf-8
+      - application/xml; charset=utf-8
       Date:
-      - Mon, 21 Aug 2023 20:09:22 GMT
+      - Fri, 01 Sep 2023 20:07:45 GMT
       Etag:
-      - W/"4862455c92d18da21cd7b56094d99052"
+      - W/"c50f8f51f11f8219a99e9e48219ff250"
       Location:
-      - https://blinkbid-local-larissa.chargify.com/subscriptions/67573194
+      - https://blinkbid-local-larissa.chargify.com/subscriptions/68016150
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Server:
@@ -53,23 +68,86 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger(R) Enterprise
       X-Request-Id:
-      - 249bafd0-c68b-4d46-b282-8d4018f77521
+      - 1888c404-efb2-4d1b-bcb6-8552b1ab6b1c
       X-Runtime:
-      - '0.394505'
+      - '0.566467'
       X-Xss-Protection:
       - 1; mode=block
-      Content-Length:
-      - '3347'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
       encoding: UTF-8
-      string: '{"subscription":{"id":67573194,"state":"trialing","trial_started_at":"2023-08-21T13:09:22-07:00","trial_ended_at":"2023-09-04T13:09:22-07:00","activated_at":null,"created_at":"2023-08-21T13:09:22-07:00","updated_at":"2023-08-21T13:09:22-07:00","expires_at":null,"balance_in_cents":0,"current_period_ends_at":"2023-09-04T13:09:22-07:00","next_assessment_at":"2023-09-04T13:09:22-07:00","canceled_at":null,"cancellation_message":null,"next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":"2023-08-21T13:09:22-07:00","previous_state":"trialing","signup_payment_id":906467483,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":null,"total_revenue_in_cents":0,"product_price_in_cents":19200,"product_version_number":1,"payment_type":null,"referral_code":null,"coupon_use_count":null,"coupon_uses_allowed":null,"reason_code":null,"automatically_resume_at":null,"coupon_codes":[],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":2328903,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"customer":{"id":70337947,"first_name":"Chargify","last_name":"Wrapper","organization":"BlinkBid","email":"Chargify@example.com","created_at":"2023-08-21T13:09:22-07:00","updated_at":"2023-08-21T13:09:22-07:00","reference":"XYZ","address":"123
-        Mass Ave.","address_2":null,"city":"Boston","state":"MA","state_name":"Massachusetts","zip":"02120","country":"US","country_name":"United
-        States","phone":"(617) 111 - 0000","portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"cc_emails":null,"tax_exempt":false,"parent_id":null},"product":{"id":6459786,"name":"Lite-Annual-T","handle":"lite-annual-trial","description":"Users:
-        1\r\nPersonalities: 1","accounting_code":"01","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2023-04-12T14:08:44-07:00","updated_at":"2023-04-12T14:08:44-07:00","price_in_cents":19200,"interval":12,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":2328903,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":2328903,"product_price_point_name":"New
-        Price May 2021","product_price_point_handle":"uuid:1b654700-8c25-0139-e084-06de0fa030d9","product_family":{"id":2520553,"name":"Blinkbid
-        - USA","description":"Blinkbid software sold in the United States, in USD
-        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2023-04-12T14:08:43-07:00","updated_at":"2023-04-12T14:08:43-07:00"},"public_signup_pages":[]}}}'
-  recorded_at: Mon, 21 Aug 2023 20:09:22 GMT
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<subscription>\n  <id type=\"integer\">68016150</id>\n
+        \ <state>trialing</state>\n  <trial_started_at type=\"datetime\">2023-09-01T13:07:45-07:00</trial_started_at>\n
+        \ <trial_ended_at type=\"datetime\">2023-09-15T13:07:45-07:00</trial_ended_at>\n
+        \ <activated_at nil=\"true\"/>\n  <created_at type=\"datetime\">2023-09-01T13:07:45-07:00</created_at>\n
+        \ <updated_at type=\"datetime\">2023-09-01T13:07:45-07:00</updated_at>\n  <expires_at
+        nil=\"true\"/>\n  <balance_in_cents type=\"integer\">0</balance_in_cents>\n
+        \ <current_period_ends_at type=\"datetime\">2023-09-15T13:07:45-07:00</current_period_ends_at>\n
+        \ <next_assessment_at type=\"datetime\">2023-09-15T13:07:45-07:00</next_assessment_at>\n
+        \ <canceled_at nil=\"true\"/>\n  <cancellation_message nil=\"true\"/>\n  <next_product_id
+        nil=\"true\"/>\n  <next_product_handle nil=\"true\"/>\n  <cancel_at_end_of_period
+        type=\"boolean\">false</cancel_at_end_of_period>\n  <payment_collection_method>automatic</payment_collection_method>\n
+        \ <snap_day nil=\"true\"/>\n  <cancellation_method nil=\"true\"/>\n  <current_period_started_at
+        type=\"datetime\">2023-09-01T13:07:45-07:00</current_period_started_at>\n
+        \ <previous_state>trialing</previous_state>\n  <signup_payment_id type=\"integer\">912769717</signup_payment_id>\n
+        \ <signup_revenue>0.00</signup_revenue>\n  <delayed_cancel_at nil=\"true\"/>\n
+        \ <coupon_code nil=\"true\"/>\n  <total_revenue_in_cents type=\"integer\">0</total_revenue_in_cents>\n
+        \ <product_price_in_cents type=\"integer\">19200</product_price_in_cents>\n
+        \ <product_version_number type=\"integer\">1</product_version_number>\n  <payment_type
+        nil=\"true\"/>\n  <referral_code nil=\"true\"/>\n  <coupon_use_count nil=\"true\"/>\n
+        \ <coupon_uses_allowed nil=\"true\"/>\n  <reason_code nil=\"true\"/>\n  <automatically_resume_at
+        nil=\"true\"/>\n  <coupon_codes type=\"array\"/>\n  <offer_id nil=\"true\"/>\n
+        \ <payer_id nil=\"true\"/>\n  <receives_invoice_emails nil=\"true\"/>\n  <product_price_point_id
+        type=\"integer\">2328903</product_price_point_id>\n  <next_product_price_point_id
+        nil=\"true\"/>\n  <net_terms nil=\"true\"/>\n  <stored_credential_transaction_id
+        nil=\"true\"/>\n  <reference nil=\"true\"/>\n  <currency>USD</currency>\n
+        \ <on_hold_at nil=\"true\"/>\n  <scheduled_cancellation_at nil=\"true\"/>\n
+        \ <product_price_point_type>default</product_price_point_type>\n  <dunning_communication_delay_enabled
+        type=\"boolean\">false</dunning_communication_delay_enabled>\n  <dunning_communication_delay_time_zone
+        nil=\"true\"/>\n  <customer>\n    <id type=\"integer\">70649945</id>\n    <first_name>Chargify</first_name>\n
+        \   <last_name>Wrapper</last_name>\n    <organization>BlinkBid</organization>\n
+        \   <email>chargify@example.com</email>\n    <created_at type=\"datetime\">2023-09-01T13:07:45-07:00</created_at>\n
+        \   <updated_at type=\"datetime\">2023-09-01T13:07:45-07:00</updated_at>\n
+        \   <reference nil=\"true\"/>\n    <address>123 Mass Ave.</address>\n    <address_2
+        nil=\"true\"/>\n    <city>Boston</city>\n    <state>MA</state>\n    <state_name>Massachusetts</state_name>\n
+        \   <zip>02120</zip>\n    <country>US</country>\n    <country_name>United
+        States</country_name>\n    <phone>(617) 111 - 0000</phone>\n    <portal_invite_last_sent_at
+        nil=\"true\"/>\n    <portal_invite_last_accepted_at nil=\"true\"/>\n    <verified
+        type=\"boolean\">false</verified>\n    <portal_customer_created_at nil=\"true\"/>\n
+        \   <vat_number nil=\"true\"/>\n    <cc_emails nil=\"true\"/>\n    <tax_exempt
+        type=\"boolean\">false</tax_exempt>\n    <parent_id nil=\"true\"/>\n  </customer>\n
+        \ <product>\n    <id type=\"integer\">6459786</id>\n    <name>Lite-Annual-T</name>\n
+        \   <handle>lite-annual-trial</handle>\n    <description>Users: 1\r\nPersonalities:
+        1</description>\n    <accounting_code>01</accounting_code>\n    <request_credit_card
+        type=\"boolean\">true</request_credit_card>\n    <expiration_interval nil=\"true\"/>\n
+        \   <expiration_interval_unit>never</expiration_interval_unit>\n    <created_at
+        type=\"datetime\">2023-04-12T14:08:44-07:00</created_at>\n    <updated_at
+        type=\"datetime\">2023-04-12T14:08:44-07:00</updated_at>\n    <price_in_cents
+        type=\"integer\">19200</price_in_cents>\n    <interval type=\"integer\">12</interval>\n
+        \   <interval_unit>month</interval_unit>\n    <initial_charge_in_cents nil=\"true\"/>\n
+        \   <trial_price_in_cents type=\"integer\">0</trial_price_in_cents>\n    <trial_interval
+        type=\"integer\">14</trial_interval>\n    <trial_interval_unit>day</trial_interval_unit>\n
+        \   <archived_at nil=\"true\"/>\n    <require_credit_card type=\"boolean\">false</require_credit_card>\n
+        \   <return_params></return_params>\n    <taxable type=\"boolean\">false</taxable>\n
+        \   <update_return_url></update_return_url>\n    <tax_code></tax_code>\n    <initial_charge_after_trial
+        type=\"boolean\">false</initial_charge_after_trial>\n    <version_number type=\"integer\">1</version_number>\n
+        \   <update_return_params></update_return_params>\n    <default_product_price_point_id
+        type=\"integer\">2328903</default_product_price_point_id>\n    <request_billing_address
+        type=\"boolean\">false</request_billing_address>\n    <require_billing_address
+        type=\"boolean\">false</require_billing_address>\n    <require_shipping_address
+        type=\"boolean\">false</require_shipping_address>\n    <use_site_exchange_rate
+        type=\"boolean\">true</use_site_exchange_rate>\n    <item_category nil=\"true\"/>\n
+        \   <product_price_point_id type=\"integer\">2328903</product_price_point_id>\n
+        \   <product_price_point_name>New Price May 2021</product_price_point_name>\n
+        \   <product_price_point_handle>uuid:1b654700-8c25-0139-e084-06de0fa030d9</product_price_point_handle>\n
+        \   <product_family>\n      <id type=\"integer\">2520553</id>\n      <name>Blinkbid
+        - USA</name>\n      <description>Blinkbid software sold in the United States,
+        in USD currency.</description>\n      <handle>blinkbid-usa</handle>\n      <accounting_code
+        nil=\"true\"/>\n      <created_at type=\"datetime\">2023-04-12T14:08:43-07:00</created_at>\n
+        \     <updated_at type=\"datetime\">2023-04-12T14:08:43-07:00</updated_at>\n
+        \   </product_family>\n    <public_signup_pages type=\"array\"/>\n  </product>\n</subscription>\n"
+  recorded_at: Fri, 01 Sep 2023 20:07:44 GMT
 recorded_with: VCR 6.2.0

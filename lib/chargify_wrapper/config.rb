@@ -13,7 +13,7 @@ module ChargifyWrapper
       Base.site = "https://#{subdomain}.chargify.com"
       Base.user = api_key
       Base.password = "X"
-      Base.format = ActiveResource::Formats::JsonFormat
+      Base.format = ActiveResource::Formats::XmlFormat
     end
   end
 end
