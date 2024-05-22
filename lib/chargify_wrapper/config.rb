@@ -13,7 +13,17 @@ module ChargifyWrapper
       Base.site = "https://#{subdomain}.chargify.com"
       Base.user = api_key
       Base.password = "X"
-      Base.format = ActiveResource::Formats::XmlFormat
+      Base.format = ActiveResource::Formats::JsonFormat
+
+      setup
+    end
+
+    private
+
+    def setup
+      Time.zone = 'UTC'
+      ActiveSupport::JSON::Encoding.use_standard_json_time_format = true
+      ActiveSupport.parse_json_times = true
     end
   end
 end
