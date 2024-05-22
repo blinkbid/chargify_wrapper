@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'base64'
-require 'vcr'
+require "base64"
+require "vcr"
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/cassettes"
@@ -17,11 +17,11 @@ VCR.configure do |config|
   }
 
   config.filter_sensitive_data("<CHARGIFY_SUBDOMAIN>") do
-    ENV.fetch('SUBDOMAIN', 'test')
+    ENV.fetch("SUBDOMAIN", "test")
   end
 
   config.filter_sensitive_data("<CHARGIFY_API_KEY>") do |interaction|
-    interaction.request.headers['Authorization']
+    interaction.request.headers["Authorization"]
   end
 end
 
@@ -42,14 +42,13 @@ module VcrSetup
     example
       .metadata[:full_description]
       .split(/\s+/, 2)
-      .join('/')
+      .join("/")
       .underscore
-      .gsub(%r{[^\w/]+}, '_')
+      .gsub(%r{[^\w/]+}, "_")
   end
 
   def match_on(example)
-    default_match_on =
-      VCR
+    default_match_on = VCR
       .configuration
       .default_cassette_options[:match_requests_on]
 
