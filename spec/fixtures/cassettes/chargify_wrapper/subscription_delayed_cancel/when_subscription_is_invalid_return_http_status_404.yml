@@ -2,22 +2,15 @@
 http_interactions:
 - request:
     method: post
-    uri: https://blinkbid-local-larissa.chargify.com/subscriptions/new/delayed_cancel.xml
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/new/delayed_cancel.json
     body:
       encoding: UTF-8
-      string: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <hash>
-          <subscription>
-            <cancellation-message nil="true"/>
-            <reason-code nil="true"/>
-          </subscription>
-        </hash>
+      string: '{"cancellation_message":null,"reason_code":null}'
     headers:
       Authorization:
-      - Basic UDEyTmNDSWFJVXRvMk5lTzBmNTE3NWVURWl1OW14Wk5KSjVHZVV0bzpY
+      - <CHARGIFY_API_KEY>
       Content-Type:
-      - application/xml
+      - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -30,11 +23,11 @@ http_interactions:
       message: Not Found
     headers:
       Cache-Control:
-      - no-cache, no-store
+      - private, no-store
       Content-Type:
-      - application/xml
+      - application/json
       Date:
-      - Fri, 01 Sep 2023 20:07:49 GMT
+      - Wed, 22 May 2024 16:22:46 GMT
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Server:
@@ -52,9 +45,9 @@ http_interactions:
       X-Powered-By:
       - Phusion Passenger(R) Enterprise
       X-Request-Id:
-      - b48d690a-b3f8-444d-b669-e225e102fe58
+      - a092d6c6-41a6-4a24-91a4-beaccc4bf307
       X-Runtime:
-      - '0.024109'
+      - '0.016444'
       X-Xss-Protection:
       - 1; mode=block
       Content-Length:
@@ -64,5 +57,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Fri, 01 Sep 2023 20:07:47 GMT
+  recorded_at: Wed, 22 May 2024 16:22:47 GMT
 recorded_with: VCR 6.2.0

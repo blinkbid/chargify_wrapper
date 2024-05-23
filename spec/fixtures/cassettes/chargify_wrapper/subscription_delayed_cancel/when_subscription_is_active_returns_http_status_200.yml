@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/75901562.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - <CHARGIFY_API_KEY>
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 22 May 2024 16:25:47 GMT
+      Etag:
+      - W/"108e37ef266bc8d35f995b3638fb94f7"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 90f91d87-dc0a-4907-9cba-3f18221f2669
+      X-Runtime:
+      - '0.082425'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '3391'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":75901562,"state":"trialing","trial_started_at":"2024-05-22T09:22:44-07:00","trial_ended_at":"2024-06-05T09:22:44-07:00","activated_at":null,"created_at":"2024-05-22T09:22:44-07:00","updated_at":"2024-05-22T09:22:44-07:00","expires_at":null,"balance_in_cents":0,"current_period_ends_at":"2024-06-05T09:22:44-07:00","next_assessment_at":"2024-06-05T09:22:44-07:00","canceled_at":null,"cancellation_message":null,"next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":"2024-05-22T09:22:44-07:00","previous_state":"trialing","signup_payment_id":1077685541,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":null,"total_revenue_in_cents":0,"product_price_in_cents":19200,"product_version_number":1,"payment_type":null,"referral_code":"f7nmzq","coupon_use_count":null,"coupon_uses_allowed":null,"reason_code":null,"automatically_resume_at":null,"coupon_codes":[],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":1272286,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"current_billing_amount_in_cents":19200,"customer":{"id":79721172,"first_name":"Chargify","last_name":"Wrapper","organization":"BlinkBid","email":"chargify@example.com","created_at":"2024-05-22T09:22:44-07:00","updated_at":"2024-05-22T09:22:44-07:00","reference":null,"address":"123
+        Mass Ave.","address_2":null,"city":"Boston","state":"MA","state_name":"Massachusetts","zip":"02120","country":"US","country_name":"United
+        States","phone":"(617) 111 - 0000","portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"cc_emails":null,"tax_exempt":false,"parent_id":null},"product":{"id":5505205,"name":"Lite-Annual-T","handle":"lite-annual-trial","description":"Users:
+        1\r\nPersonalities: 1","accounting_code":"01","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2021-05-26T06:06:08-07:00","updated_at":"2021-05-26T06:06:08-07:00","price_in_cents":19200,"interval":12,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":1272286,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":1272286,"product_price_point_name":"New
+        Price May 2021","product_price_point_handle":"uuid:1b654700-8c25-0139-e084-06de0fa030d9","product_family":{"id":1726157,"name":"Blinkbid
+        - USA","description":"Blinkbid software sold in the United States, in USD
+        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2021-05-26T06:06:06-07:00","updated_at":"2021-05-26T06:06:06-07:00"},"public_signup_pages":[]}}}'
+  recorded_at: Wed, 22 May 2024 16:25:47 GMT
+- request:
+    method: post
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/75901562/delayed_cancel.json
+    body:
+      encoding: UTF-8
+      string: '{"cancellation_message":null,"reason_code":null}'
+    headers:
+      Authorization:
+      - <CHARGIFY_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 22 May 2024 16:25:48 GMT
+      Etag:
+      - W/"d65435b430c182a8a22c14ebf471fce4"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Set-Cookie:
+      - _chargify_session=cnJBTE1odUdMN0JtNTBpNFJTektNV2h6N3UwcUY5dHlhUFkrQnpBMXpvRUlVcjNiVDFKQUFlQy84OWVXaUV4U0ZWdzEvbmdtek9xTW1nZmtqdm1CZ2ZUc2JwWURPRG5CWXI0amEvNjB3QUhOa0x0Z0FZVHFlUENCQlkyVUZ4MGgrZDdESm5TVDdOT1dtNG1rTVdIS3NILzVtU3dyOVdReFJyeiswUlN1WVpNbkY2ejNXQTRabkRlUXZXQzdrRUhCaUlTVnBtU3hLZEYxY01oaE1sVHJZTUVadk5obVdxK3VjamFYSFFHQks0bz0tLWV5QlFBV3RQVWZud0VYV0ZCL3VOMmc9PQ%3D%3D--4352897bd1818daeca6b77b5f58c9a9dd11cf0a4;
+        domain=.chargify.com; path=/; secure; HttpOnly
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 5d47dae9-8b1f-4423-8f47-6de5e2be0626
+      X-Runtime:
+      - '0.148214'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"message":"This subscription is scheduled to be canceled at the end
+        of the current period"}'
+  recorded_at: Wed, 22 May 2024 16:25:48 GMT
+recorded_with: VCR 6.2.0

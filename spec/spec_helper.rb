@@ -4,9 +4,11 @@ require "chargify_wrapper"
 require "webmock/rspec"
 require "rubygems"
 require "dotenv/load"
-require "vcr_setup"
+require "support/vcr_setup"
 
 RSpec.configure do |config|
+  include VcrSetup
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 
@@ -16,6 +18,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.around(:each, :vcr) { |example| handle_vcr(example) }
 end
 
 WebMock.disable_net_connect!
