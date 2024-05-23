@@ -3,6 +3,7 @@ PATH
   specs:
     chargify_wrapper (0.3.0)
       activeresource (~> 6.0)
+      activesupport (~> 7.0)
 
 GEM
   remote: https://rubygems.org/
