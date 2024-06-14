@@ -14,8 +14,8 @@ module ChargifyWrapper
       )
     end
 
-    def change_default_payment_profile(params = {})
-      payment_profiles.find(:one, params).change_payment_profile
+    def change_default_payment_profile(payment_profile)
+      post("payment_profiles/#{payment_profile.id}/change_payment_profile")
     end
   end
 end
