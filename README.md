@@ -30,7 +30,7 @@ gem uninstall --force chargify_wrapper
 
 2. Build gem from gemspec
 ```
-gem build chargify_wrapper.gemspec --ouput=chargify_wrapper.gem
+gem build chargify_wrapper.gemspec --output=chargify_wrapper.gem
 ```
 
 3. Install gem locally
