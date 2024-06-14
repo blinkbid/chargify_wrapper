@@ -13,7 +13,7 @@ ChargifyWrapper.configure do |config|
   config.log_requests = true # default is false
 end
 ```
-After setting up those values, you can perform actions using the `Chargify::Wrapper` module as prefix.
+After setting up those values, you can perform actions using the `ChargifyWrapper::...` module as prefix.
 
 ## Development
 
@@ -45,6 +45,21 @@ You can now use the gem as any other inside a ruby script or `irb`.
 > rebuilding the gem, specially in the case where a new class is created.
 > To fix that, add the new class to git using `git add PATH_TO_NEW_CLASS.rb` and
 > rebuild the gem.
+
+### Testing
+
+To test the gem locally, after building it you can require it inside an `irb` console
+```ruby
+require 'chargify_wrapper'
+
+ChargifyWrapper.configure do |config|
+  config.subdomain = '...'
+  config.api_key = '...'
+  config.log_requests = true
+end
+```
+
+After running the configuration above, you can use the classes as needed inside the `irb`
 
 ## Running specs
 
