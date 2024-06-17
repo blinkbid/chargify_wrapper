@@ -34,6 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency("rubocop-performance", "~> 1.18")
   spec.add_development_dependency("rubocop-rspec", "~> 2.23")
   spec.add_runtime_dependency("httplog", "~> 1.6.3")
-  spec.add_runtime_dependency("activesupport", "~> 7.0")
-  spec.add_runtime_dependency("activeresource", "~> 6.0")
+  spec.add_runtime_dependency("activesupport", "~> 6.1", ">= 6.1.7.7")
+  spec.add_runtime_dependency("activeresource", "~> 6.1.0")
 end
