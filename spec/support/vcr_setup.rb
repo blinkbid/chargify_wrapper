@@ -21,7 +21,7 @@ VCR.configure do |config|
   end
 
   config.filter_sensitive_data("<CHARGIFY_API_KEY>") do |interaction|
-    interaction.request.headers["Authorization"]
+    interaction.request.headers["Authorization"].first
   end
 end
 

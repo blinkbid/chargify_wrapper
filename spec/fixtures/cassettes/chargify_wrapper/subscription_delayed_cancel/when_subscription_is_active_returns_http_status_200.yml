@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - <CHARGIFY_API_KEY>
+      - "<CHARGIFY_API_KEY>"
       Accept:
       - application/json
       Accept-Encoding:
@@ -74,7 +74,7 @@ http_interactions:
       string: '{"cancellation_message":null,"reason_code":null}'
     headers:
       Authorization:
-      - <CHARGIFY_API_KEY>
+      - "<CHARGIFY_API_KEY>"
       Content-Type:
       - application/json
       Accept-Encoding:

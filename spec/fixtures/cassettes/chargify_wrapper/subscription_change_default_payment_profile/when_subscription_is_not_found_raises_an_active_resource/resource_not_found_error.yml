@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/payment_profiles.json
+    body:
+      encoding: UTF-8
+      string: '{"payment_profile":{"first_name":"Joao","last_name":"Das Neves","last_four":"3858","card_type":"visa","expiration_month":11,"expiration_year":2034,"customer_id":80219272,"current_vault":"bogus","vault_token":"1","billing_address":"123
+        Main St.","billing_city":"Boston","billing_state":"MA","billing_zip":"02120","billing_country":"US","billing_address_2":"Addd2","payment_type":"credit_card"}}'
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 17 Jun 2024 17:50:57 GMT
+      Etag:
+      - W/"543c87ca1d1198241f8b34bdfbd7423b"
+      Location:
+      - "/payment_profiles/59640938"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 201 Created
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - c0ed7d7b-5a7f-4937-bd56-b5a1ee67ac16
+      X-Runtime:
+      - '0.074214'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"payment_profile":{"id":59640938,"first_name":"Joao","last_name":"Das
+        Neves","masked_card_number":"XXXX-XXXX-XXXX-3858","card_type":"visa","expiration_month":11,"expiration_year":2034,"customer_id":80219272,"current_vault":"bogus","vault_token":"1","billing_address":"123
+        Main St.","billing_city":"Boston","billing_state":"MA","billing_zip":"02120","billing_country":"US","customer_vault_token":null,"billing_address_2":"Addd2","site_gateway_setting_id":null,"payment_type":"credit_card","disabled":false,"gateway_handle":null}}'
+  recorded_at: Mon, 17 Jun 2024 17:51:02 GMT
+- request:
+    method: post
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/new/payment_profiles/59640938/change_payment_profile.json
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":12345678}}'
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 17 Jun 2024 17:50:58 GMT
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 404 Not Found
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - c14a0da5-12e9-4e91-97e2-df3b498c3578
+      X-Runtime:
+      - '0.020317'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 17 Jun 2024 17:51:03 GMT
+recorded_with: VCR 6.2.0
