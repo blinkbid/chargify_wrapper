@@ -1,0 +1,133 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/76354749.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 17 Jun 2024 17:50:59 GMT
+      Etag:
+      - W/"a9e6ca4d9a98e7094194a087a59dd923"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 7d939554-8d3e-4a74-a1d9-71b9e39e7193
+      X-Runtime:
+      - '0.198835'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '3845'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":76354749,"state":"trialing","trial_started_at":"2024-06-06T10:45:56-07:00","trial_ended_at":"2024-06-20T10:45:56-07:00","activated_at":null,"created_at":"2024-06-06T10:45:56-07:00","updated_at":"2024-06-17T10:50:56-07:00","expires_at":null,"balance_in_cents":0,"current_period_ends_at":"2024-06-20T10:45:56-07:00","next_assessment_at":"2024-06-20T10:45:56-07:00","canceled_at":null,"cancellation_message":null,"next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":"2024-06-06T10:45:56-07:00","previous_state":"trialing","signup_payment_id":1088601798,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":null,"total_revenue_in_cents":0,"product_price_in_cents":28800,"product_version_number":1,"payment_type":"credit_card","referral_code":null,"coupon_use_count":null,"coupon_uses_allowed":null,"reason_code":null,"automatically_resume_at":null,"coupon_codes":[],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":2245073,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"current_billing_amount_in_cents":28800,"customer":{"id":80219272,"first_name":"Luana","last_name":"2","organization":null,"email":"ls2@gmail.com","created_at":"2024-06-06T10:45:56-07:00","updated_at":"2024-06-06T10:45:56-07:00","reference":null,"address":null,"address_2":null,"city":null,"state":null,"state_name":null,"zip":null,"country":null,"country_name":null,"phone":null,"portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"cc_emails":null,"tax_exempt":false,"parent_id":null},"product":{"id":6388932,"name":"Solo-Annual-T","handle":"solo-annual-trial","description":"Users:
+        1\r\nPersonalities: 10","accounting_code":"11","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2022-12-15T06:06:31-08:00","updated_at":"2022-12-15T06:06:31-08:00","price_in_cents":28800,"interval":12,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":2245073,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":2245073,"product_price_point_name":"New
+        Price May 2021","product_price_point_handle":"uuid:71f899e0-8c25-0139-8dc8-0a575a757c23","product_family":{"id":2473952,"name":"Blinkbid
+        - USA","description":"Blinkbid software sold in the United States, in USD
+        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2022-12-15T06:06:29-08:00","updated_at":"2022-12-15T06:06:29-08:00"},"public_signup_pages":[]},"credit_card":{"id":59640936,"first_name":"Joao","last_name":"Das
+        Neves","masked_card_number":"XXXX-XXXX-XXXX-3858","card_type":"visa","expiration_month":11,"expiration_year":2034,"customer_id":80219272,"current_vault":"bogus","vault_token":"1","billing_address":"123
+        Main St.","billing_city":"Boston","billing_state":"MA","billing_zip":"02120","billing_country":"US","customer_vault_token":null,"billing_address_2":"Addd2","payment_type":"credit_card","disabled":false,"site_gateway_setting_id":null,"gateway_handle":null}}}'
+  recorded_at: Mon, 17 Jun 2024 17:51:05 GMT
+- request:
+    method: post
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/76354749/payment_profiles/12345678/change_payment_profile.json
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":76354749,"state":"trialing","trial_started_at":"2024-06-06T17:45:56.000Z","trial_ended_at":"2024-06-20T17:45:56.000Z","activated_at":null,"created_at":"2024-06-06T17:45:56.000Z","updated_at":"2024-06-17T17:50:56.000Z","expires_at":null,"balance_in_cents":0,"current_period_ends_at":"2024-06-20T17:45:56.000Z","next_assessment_at":"2024-06-20T17:45:56.000Z","canceled_at":null,"cancellation_message":null,"next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":"2024-06-06T17:45:56.000Z","previous_state":"trialing","signup_payment_id":1088601798,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":null,"total_revenue_in_cents":0,"product_price_in_cents":28800,"product_version_number":1,"payment_type":"credit_card","referral_code":null,"coupon_use_count":null,"coupon_uses_allowed":null,"reason_code":null,"automatically_resume_at":null,"coupon_codes":[],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":2245073,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"current_billing_amount_in_cents":28800,"customer":{"id":80219272,"first_name":"Luana","last_name":"2","organization":null,"email":"ls2@gmail.com","created_at":"2024-06-06T17:45:56.000Z","updated_at":"2024-06-06T17:45:56.000Z","reference":null,"address":null,"address_2":null,"city":null,"state":null,"state_name":null,"zip":null,"country":null,"country_name":null,"phone":null,"portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"cc_emails":null,"tax_exempt":false,"parent_id":null},"product":{"id":6388932,"name":"Solo-Annual-T","handle":"solo-annual-trial","description":"Users:
+        1\r\nPersonalities: 10","accounting_code":"11","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2022-12-15T14:06:31.000Z","updated_at":"2022-12-15T14:06:31.000Z","price_in_cents":28800,"interval":12,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":2245073,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":2245073,"product_price_point_name":"New
+        Price May 2021","product_price_point_handle":"uuid:71f899e0-8c25-0139-8dc8-0a575a757c23","product_family":{"id":2473952,"name":"Blinkbid
+        - USA","description":"Blinkbid software sold in the United States, in USD
+        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2022-12-15T14:06:29.000Z","updated_at":"2022-12-15T14:06:29.000Z"},"public_signup_pages":[]},"credit_card":{"id":59640936,"first_name":"Joao","last_name":"Das
+        Neves","masked_card_number":"XXXX-XXXX-XXXX-3858","card_type":"visa","expiration_month":11,"expiration_year":2034,"customer_id":80219272,"current_vault":"bogus","vault_token":"1","billing_address":"123
+        Main St.","billing_city":"Boston","billing_state":"MA","billing_zip":"02120","billing_country":"US","customer_vault_token":null,"billing_address_2":"Addd2","payment_type":"credit_card","disabled":false,"site_gateway_setting_id":null,"gateway_handle":null}}}'
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 17 Jun 2024 17:51:00 GMT
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 404 Not Found
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - a57b6968-e674-4a81-bad6-c3910cb314c8
+      X-Runtime:
+      - '0.033019'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 17 Jun 2024 17:51:06 GMT
+recorded_with: VCR 6.2.0
