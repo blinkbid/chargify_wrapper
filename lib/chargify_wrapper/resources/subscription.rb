@@ -2,8 +2,6 @@
 
 module ChargifyWrapper
   class Subscription < Base
-    has_many :payment_profiles
-
     def delayed_cancel(attrs = {})
       post(
         :delayed_cancel, nil,
