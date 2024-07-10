@@ -2,8 +2,9 @@ PATH
   remote: .
   specs:
     chargify_wrapper (0.4.1)
+      activemodel (= 6.1.7.7)
       activeresource (~> 6.1.0)
-      activesupport (~> 6.1, >= 6.1.7.7)
+      activesupport (= 6.1.7.7)
       httplog (~> 1.6.3)
 
 GEM
