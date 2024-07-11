@@ -99,4 +99,53 @@ RSpec.describe ChargifyWrapper::Subscription do
       end
     end
   end
+
+  describe "#reactivate_subscription", :vcr do
+    subject(:reactivate_subscription) { subscription.reactivate_subscription }
+
+    let(:subscription) { described_class.find(77203965) }
+
+    context "when subscription is on trial_ended state" do
+      it "returns http status 200" do
+        expect(reactivate_subscription).to be_a(Net::HTTPOK)
+      end
+
+      it "reactivates the subscription" do
+        subscription.reload
+        expect(subscription.state).to eq("active")
+      end
+    end
+
+    context "when include_trial is set to true" do
+      subject(:reactivate_subscription) { subscription.reactivate_subscription(include_trial: true) }
+
+      it { expect(subscription.trial_started_at).not_to be_nil }
+      it { expect(subscription.trial_ended_at).not_to be_nil }
+    end
+
+    context "when include_trial is set to false" do
+      subject(:reactivate_subscription) { subscription.reactivate_subscription(include_trial: false) }
+
+      it { expect(subscription.trial_started_at).to be_nil }
+      it { expect(subscription.trial_ended_at).to be_nil }
+    end
+
+    context "when resume is set to true" do
+      subject(:reactivate_subscription) { subscription.reactivate_subscription(resume: true) }
+
+      it { expect(subscription.next_assessment_at).not_to be_nil }
+    end
+
+    context "when resume is set to false" do
+      subject(:reactivate_subscription) { subscription.reactivate_subscription(resume: false) }
+
+      it { expect(subscription.next_assessment_at).to be_nil }
+    end
+
+    context "when reactivation fails" do
+      let(:subscription) { described_class.find(77198565) }
+
+      it { expect([subscription.errors.full_messages]).not_to be_empty }
+    end
+  end
 end
