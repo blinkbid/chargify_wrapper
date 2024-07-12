@@ -99,4 +99,53 @@ RSpec.describe ChargifyWrapper::Subscription do
       end
     end
   end
+
+  describe "#reactivate", :vcr do
+    subject(:reactivate_subscription) { subscription.reactivate }
+
+    let(:url_matcher) { Regexp.new(".chargify.com/subscriptions/#{subscription.id}/reactivate.json") }
+
+    context "when subscription is on trial_ended state" do
+      let(:subscription) { described_class.find(77228697) }
+
+      it "returns http status 200" do
+        reactivate_subscription
+        expect(WebMock).to have_requested(:put, url_matcher).once
+      end
+
+      it "reactivates the subscription" do
+        subscription.reload
+        expect(subscription.state).to eq("active")
+      end
+    end
+
+    context "when the call is sent with parameters" do
+      let(:subscription) { described_class.find(77228728) }
+
+      it "sends the request correctly" do
+        subscription.reactivate(
+          include_trial: true,
+          preserve_balance: true,
+          coupon_code: "10OFF",
+          use_credits_and_prepayments: true,
+          resume: true
+        )
+
+        expect(WebMock).to have_requested(:put, url_matcher)
+          .with(body: {
+            include_trial: true,
+            preserve_balance: true,
+            coupon_code: "10OFF",
+            use_credits_and_prepayments: true,
+            resume: true
+          }, headers: {"Content-Type" => "application/json"}).once
+      end
+    end
+
+    context "when reactivation fails" do
+      let(:subscription) { described_class.find(77228576) }
+
+      it { expect([subscription.errors.full_messages]).not_to be_empty }
+    end
+  end
 end
