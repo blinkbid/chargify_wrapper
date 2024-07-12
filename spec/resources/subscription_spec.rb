@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "webmock/rspec"
 
 RSpec.describe ChargifyWrapper::Subscription do
   describe "#delayed_cancel", :vcr do
@@ -103,11 +104,15 @@ RSpec.describe ChargifyWrapper::Subscription do
   describe "#reactivate_subscription", :vcr do
     subject(:reactivate_subscription) { subscription.reactivate_subscription }
 
-    let(:subscription) { described_class.find(77203965) }
+    let(:base_url_matcher) { Regexp.new(".chargify.com/subscriptions") }
 
     context "when subscription is on trial_ended state" do
+      let(:subscription) { described_class.find(77228697) }
+      let(:url_matcher) { Regexp.new("#{base_url_matcher}/77228697/reactivate.json") }
+
       it "returns http status 200" do
-        expect(reactivate_subscription).to be_a(Net::HTTPOK)
+        reactivate_subscription
+        expect(WebMock).to have_requested(:put, url_matcher).once
       end
 
       it "reactivates the subscription" do
@@ -116,34 +121,32 @@ RSpec.describe ChargifyWrapper::Subscription do
       end
     end
 
-    context "when include_trial is set to true" do
-      subject(:reactivate_subscription) { subscription.reactivate_subscription(include_trial: true) }
+    context "when the call is sent with parameters" do
+      let(:subscription) { described_class.find(77228728) }
+      let(:url_matcher) { Regexp.new("#{base_url_matcher}/77228728/reactivate.json") }
 
-      it { expect(subscription.trial_started_at).not_to be_nil }
-      it { expect(subscription.trial_ended_at).not_to be_nil }
-    end
+      it "sends the request correctly" do
+        subscription.reactivate_subscription(
+          include_trial: true,
+          preserve_balance: true,
+          coupon_code: "10OFF",
+          use_credits_and_prepayments: true,
+          resume: true
+        )
 
-    context "when include_trial is set to false" do
-      subject(:reactivate_subscription) { subscription.reactivate_subscription(include_trial: false) }
-
-      it { expect(subscription.trial_started_at).to be_nil }
-      it { expect(subscription.trial_ended_at).to be_nil }
-    end
-
-    context "when resume is set to true" do
-      subject(:reactivate_subscription) { subscription.reactivate_subscription(resume: true) }
-
-      it { expect(subscription.next_assessment_at).not_to be_nil }
-    end
-
-    context "when resume is set to false" do
-      subject(:reactivate_subscription) { subscription.reactivate_subscription(resume: false) }
-
-      it { expect(subscription.next_assessment_at).to be_nil }
+        expect(WebMock).to have_requested(:put, url_matcher)
+          .with(body: {
+            include_trial: true,
+            preserve_balance: true,
+            coupon_code: "10OFF",
+            use_credits_and_prepayments: true,
+            resume: true
+          }, headers: {"Content-Type" => "application/json"}).once
+      end
     end
 
     context "when reactivation fails" do
-      let(:subscription) { described_class.find(77198565) }
+      let(:subscription) { described_class.find(77228576) }
 
       it { expect([subscription.errors.full_messages]).not_to be_empty }
     end

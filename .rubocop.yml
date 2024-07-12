@@ -24,3 +24,5 @@ RSpec/DescribeClass:
   Enabled: false
 RSpec/FilePath:
   Enabled: false
+RSpec/ExampleLength:
+  Enabled: false
