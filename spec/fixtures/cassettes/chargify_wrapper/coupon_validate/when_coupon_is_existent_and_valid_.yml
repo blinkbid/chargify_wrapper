@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/coupons/validate.json?code=GENERALCOUPON
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 11 Jul 2024 21:10:15 GMT
+      Etag:
+      - W/"64567b53db6d10414a6cbf7cc2ae2a7d"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 49fc7092-6241-4725-92db-c8c14dbeabec
+      X-Runtime:
+      - '0.062159'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '961'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"coupon":{"id":655202,"name":"general coupon","code":"GENERALCOUPON","description":"coupon
+        without restrictions","amount":10.0,"amount_in_cents":1000,"product_family_id":1726157,"product_family_name":"Blinkbid
+        - USA","start_date":"2024-07-10T09:10:36-07:00","end_date":"2024-07-11T23:59:59-07:00","percentage":null,"recurring":false,"recurring_scheme":"do_not_recur","duration_period_count":null,"duration_interval":null,"duration_interval_unit":null,"duration_interval_span":"1_month","allow_negative_balance":false,"archived_at":null,"conversion_limit":null,"stackable":false,"compounding_strategy":null,"created_at":"2024-07-10T09:10:36-07:00","updated_at":"2024-07-11T08:46:05-07:00","discount_type":"amount","exclude_mid_period_allocations":false,"apply_on_cancel_at_end_of_period":false,"apply_on_subscription_expiration":false,"coupon_restrictions":[{"id":1389060,"item_type":"Product","item_id":5505198,"name":"Lite-Monthly","handle":"lite-monthly"}]}}'
+  recorded_at: Thu, 11 Jul 2024 21:10:15 GMT
+recorded_with: VCR 6.2.0
