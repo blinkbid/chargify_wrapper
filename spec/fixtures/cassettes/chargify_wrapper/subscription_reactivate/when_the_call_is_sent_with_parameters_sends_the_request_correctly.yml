@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/77228728.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 12 Jul 2024 17:42:08 GMT
+      Etag:
+      - W/"5866c3358b82a64dd3e16e486cea603c"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 0541ac56-87c3-4978-8ffb-8144b9f52afd
+      X-Runtime:
+      - '0.096185'
+      X-Xss-Protection:
+      - 1; mode=block
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":77228728,"state":"trialing","trial_started_at":"2024-07-12T09:19:15-07:00","trial_ended_at":"2024-07-26T09:19:15-07:00","activated_at":null,"created_at":"2024-07-12T07:06:48-07:00","updated_at":"2024-07-12T09:19:15-07:00","expires_at":null,"balance_in_cents":0,"current_period_ends_at":"2024-07-26T09:19:15-07:00","next_assessment_at":"2024-07-26T09:19:15-07:00","canceled_at":null,"cancellation_message":null,"next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":"2024-07-12T09:19:15-07:00","previous_state":"trial_ended","signup_payment_id":1110911452,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":null,"total_revenue_in_cents":0,"product_price_in_cents":28800,"product_version_number":1,"payment_type":"credit_card","referral_code":null,"coupon_use_count":null,"coupon_uses_allowed":null,"reason_code":null,"automatically_resume_at":null,"coupon_codes":[],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":2245073,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"current_billing_amount_in_cents":28800,"customer":{"id":81125041,"first_name":"Luana","last_name":"9","organization":null,"email":"ls9@gmail.com","created_at":"2024-07-12T07:06:48-07:00","updated_at":"2024-07-12T07:06:48-07:00","reference":null,"address":null,"address_2":null,"city":null,"state":null,"state_name":null,"zip":null,"country":null,"country_name":null,"phone":null,"portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"cc_emails":null,"tax_exempt":false,"parent_id":null},"product":{"id":6388932,"name":"Solo","handle":"solo-annual-trial","description":"Users:
+        1\r\nPersonalities: 10","accounting_code":"11","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2022-12-15T06:06:31-08:00","updated_at":"2024-07-01T10:16:15-07:00","price_in_cents":28800,"interval":12,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":2245073,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":2245073,"product_price_point_name":"New
+        Price May 2021","product_price_point_handle":"uuid:71f899e0-8c25-0139-8dc8-0a575a757c23","product_family":{"id":2473952,"name":"Blinkbid
+        - USA","description":"Blinkbid software sold in the United States, in USD
+        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2022-12-15T06:06:29-08:00","updated_at":"2022-12-15T06:06:29-08:00"},"public_signup_pages":[]},"credit_card":{"id":60069205,"first_name":"Johnn","last_name":"Doeee","masked_card_number":"XXXX-XXXX-XXXX-1111","card_type":"visa","expiration_month":5,"expiration_year":2031,"customer_id":81125041,"current_vault":"bogus","vault_token":"1","billing_address":"Los
+        Angeles","billing_city":"LA","billing_state":"ABE","billing_zip":"1212121212","billing_country":"GB","customer_vault_token":null,"billing_address_2":null,"payment_type":"credit_card","disabled":false,"site_gateway_setting_id":null,"gateway_handle":null}}}'
+  recorded_at: Fri, 12 Jul 2024 17:42:14 GMT
+- request:
+    method: put
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/77228728/reactivate.json
+    body:
+      encoding: UTF-8
+      string: '{"include_trial":true,"preserve_balance":true,"coupon_code":"10OFF","use_credits_and_prepayments":true,"resume":true}'
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Cache-Control:
+      - private, no-store
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 12 Jul 2024 17:42:09 GMT
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 422 Unprocessable Entity
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 3897b18d-e597-4619-a1fd-83d88f1e0838
+      X-Runtime:
+      - '0.064301'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '99'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"errors":["Cannot reactivate a subscription that is not marked \"Canceled\"
+        or \"Trial Ended\"."]}'
+  recorded_at: Fri, 12 Jul 2024 17:42:15 GMT
+recorded_with: VCR 6.2.0

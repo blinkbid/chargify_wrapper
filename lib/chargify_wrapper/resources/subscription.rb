@@ -16,7 +16,7 @@ module ChargifyWrapper
       post("payment_profiles/#{payment_profile.id}/change_payment_profile")
     end
 
-    def reactivate_subscription(attrs = {})
+    def reactivate(attrs = {})
       handle_errors do
         put(
           :reactivate, nil,

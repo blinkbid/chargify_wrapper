@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "webmock/rspec"
 
 RSpec.describe ChargifyWrapper::Subscription do
   describe "#delayed_cancel", :vcr do
@@ -101,14 +100,13 @@ RSpec.describe ChargifyWrapper::Subscription do
     end
   end
 
-  describe "#reactivate_subscription", :vcr do
-    subject(:reactivate_subscription) { subscription.reactivate_subscription }
+  describe "#reactivate", :vcr do
+    subject(:reactivate_subscription) { subscription.reactivate }
 
-    let(:base_url_matcher) { Regexp.new(".chargify.com/subscriptions") }
+    let(:url_matcher) { Regexp.new(".chargify.com/subscriptions/#{subscription.id}/reactivate.json") }
 
     context "when subscription is on trial_ended state" do
       let(:subscription) { described_class.find(77228697) }
-      let(:url_matcher) { Regexp.new("#{base_url_matcher}/77228697/reactivate.json") }
 
       it "returns http status 200" do
         reactivate_subscription
@@ -123,10 +121,9 @@ RSpec.describe ChargifyWrapper::Subscription do
 
     context "when the call is sent with parameters" do
       let(:subscription) { described_class.find(77228728) }
-      let(:url_matcher) { Regexp.new("#{base_url_matcher}/77228728/reactivate.json") }
 
       it "sends the request correctly" do
-        subscription.reactivate_subscription(
+        subscription.reactivate(
           include_trial: true,
           preserve_balance: true,
           coupon_code: "10OFF",
