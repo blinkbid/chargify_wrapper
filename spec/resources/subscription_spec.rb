@@ -145,7 +145,7 @@ RSpec.describe ChargifyWrapper::Subscription do
     context "when reactivation fails" do
       let(:subscription) { described_class.find(76900225) }
 
-      it { expect{ reactivate_subscription }.to raise_error(ActiveResource::ResourceInvalid) }
+      it { expect { reactivate_subscription }.to raise_error(ActiveResource::ResourceInvalid) }
     end
   end
 end
