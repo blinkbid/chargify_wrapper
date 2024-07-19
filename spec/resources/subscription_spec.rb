@@ -106,7 +106,7 @@ RSpec.describe ChargifyWrapper::Subscription do
     let(:url_matcher) { Regexp.new(".chargify.com/subscriptions/#{subscription.id}/reactivate.json") }
 
     context "when subscription is on trial_ended state" do
-      let(:subscription) { described_class.find(77228697) }
+      let(:subscription) { described_class.find(77390750) }
 
       it "returns http status 200" do
         reactivate_subscription
@@ -120,7 +120,7 @@ RSpec.describe ChargifyWrapper::Subscription do
     end
 
     context "when the call is sent with parameters" do
-      let(:subscription) { described_class.find(77228728) }
+      let(:subscription) { described_class.find(77390759) }
 
       it "sends the request correctly" do
         subscription.reactivate(
@@ -143,9 +143,9 @@ RSpec.describe ChargifyWrapper::Subscription do
     end
 
     context "when reactivation fails" do
-      let(:subscription) { described_class.find(77228576) }
+      let(:subscription) { described_class.find(76900225) }
 
-      it { expect([subscription.errors.full_messages]).not_to be_empty }
+      it { expect { reactivate_subscription }.to raise_error(ActiveResource::ResourceInvalid) }
     end
   end
 end
