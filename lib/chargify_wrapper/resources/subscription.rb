@@ -17,12 +17,10 @@ module ChargifyWrapper
     end
 
     def reactivate(attrs = {})
-      handle_errors do
-        put(
-          :reactivate, nil,
-          attrs.to_json(root: :subscription)
-        )
-      end
+      put(
+        :reactivate, nil,
+        attrs.to_json(root: :subscription)
+      )
     end
   end
 end
