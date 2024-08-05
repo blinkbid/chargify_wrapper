@@ -9,7 +9,7 @@ RSpec.describe ChargifyWrapper::Coupon do
     context "when coupon is existent and valid" do
       let(:coupon) { "GENERALCOUPON" }
 
-      it { expect(validate_coupon).to be_present }
+      it { expect(validate_coupon).to be_a(described_class) }
     end
 
     context "when coupon is not existent" do
