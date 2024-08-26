@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chargify_wrapper (0.5.2)
+    chargify_wrapper (0.5.3)
       activemodel (= 6.1.7.7)
       activeresource (~> 6.1.0)
       activesupport (= 6.1.7.7)
