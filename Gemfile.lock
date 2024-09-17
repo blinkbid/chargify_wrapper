@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    chargify_wrapper (0.5.3)
+    chargify_wrapper (0.5.4)
       activemodel (~> 6.1)
       activeresource (~> 6.1.0)
       activesupport (~> 6.1)
@@ -16,7 +16,7 @@ GEM
       activemodel (> 5.x)
       activesupport (> 5.x)
       builder (~> 3.1)
-    activeresource (6.1.0)
+    activeresource (6.1.1)
       activemodel (>= 6.0)
       activemodel-serializers-xml (~> 1.0)
       activesupport (>= 6.0)
