@@ -46,6 +46,16 @@ You can now use the gem as any other inside a ruby script or `irb`.
 > To fix that, add the new class to git using `git add PATH_TO_NEW_CLASS.rb` and
 > rebuild the gem.
 
+## Releasing
+
+After needed changes are merged into `main`, we need to bump the gem version on the following files and open a pull request describing the release:
+```
+lib/chargify_wrapper/version.rb
+spec/chargify_wrapper_spec.rb
+```
+
+After the PR gets reviewed and merged, we need to create a new tagged release on GitHub following [semver versioning](https://semver.org/) standard, enabling us to use the new version anywhere.
+
 ### Testing
 
 To test the gem locally, after building it you can require it inside an `irb` console
