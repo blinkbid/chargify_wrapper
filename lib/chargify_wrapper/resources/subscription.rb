@@ -22,5 +22,9 @@ module ChargifyWrapper
         attrs.to_json(root: :subscription)
       )
     end
+
+    def apply_coupons(codes:)
+      post(:add_coupon, nil, { codes: codes }.to_json)
+    end
   end
 end
