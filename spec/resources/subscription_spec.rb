@@ -148,4 +148,44 @@ RSpec.describe ChargifyWrapper::Subscription do
       it { expect { reactivate_subscription }.to raise_error(ActiveResource::ResourceInvalid) }
     end
   end
+
+  describe "#apply_coupons", :vcr do
+    let(:subscription) { described_class.find(90823390) }
+    let(:url_matcher) do
+      Regexp.new(".chargify.com/subscriptions/#{subscription.id}/add_coupon\\.json\\z")
+    end
+
+    context "when codes are empty" do
+      it "raises ActiveResource::ResourceInvalid" do
+        expect { subscription.apply_coupons(codes: []) }.to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+
+    context "when codes are valid" do
+      it "returns Net::HTTPOK" do
+        coupon = "10DAMOUNTCODEYEAR"
+
+        response = subscription.apply_coupons(codes: [coupon])
+
+        expect(response).to be_a(Net::HTTPOK)
+        payload = JSON.parse(response.body)["subscription"]
+        expect(payload["coupon_codes"]).to eq([coupon])
+        expect(payload["coupon_code"]).to eq(coupon)
+      end
+
+      it "sends the request correctly" do
+        subscription.apply_coupons(codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS])
+
+        expect(WebMock).to have_requested(:post, url_matcher)
+          .with(body: { codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS] }.to_json).once
+      end
+    end
+
+    context "when codes are invalid" do
+      it "raises ActiveResource::ResourceInvalid" do
+        expect { subscription.apply_coupons(codes: ["INVALID"]) }
+          .to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+  end
 end
