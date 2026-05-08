@@ -167,17 +167,19 @@ RSpec.describe ChargifyWrapper::Subscription do
 
         response = subscription.apply_coupons(codes: [coupon])
 
-        expect(response).to be_a(Net::HTTPOK)
-        payload = JSON.parse(response.body)["subscription"]
-        expect(payload["coupon_codes"]).to eq([coupon])
-        expect(payload["coupon_code"]).to eq(coupon)
+        expect(response).to be_a(Net::HTTPOK).and(
+          satisfy("include coupon in subscription payload") do |r|
+            payload = JSON.parse(r.body)["subscription"]
+            payload.values_at("coupon_codes", "coupon_code") == [[coupon], coupon]
+          end
+        )
       end
 
       it "sends the request correctly" do
         subscription.apply_coupons(codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS])
 
         expect(WebMock).to have_requested(:post, url_matcher)
-          .with(body: { codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS] }.to_json).once
+          .with(body: {codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS]}.to_json).once
       end
     end
 
@@ -200,8 +202,9 @@ RSpec.describe ChargifyWrapper::Subscription do
         cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
         response = subscription.remove_coupon(coupon_code: "45RDLWDEMNAS")
 
-        expect(response).to be_a(Net::HTTPOK)
-        expect(response.body.strip).to eq("Coupon successfully removed.")
+        expect(response).to be_a(Net::HTTPOK).and(
+          satisfy { |r| r.body.strip == "Coupon successfully removed." }
+        )
       end
 
       it "sends DELETE with coupon_code query param",
