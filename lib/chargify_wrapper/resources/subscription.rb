@@ -26,5 +26,9 @@ module ChargifyWrapper
     def apply_coupons(codes:)
       post(:add_coupon, nil, { codes: codes }.to_json)
     end
+
+    def remove_coupon(coupon_code:)
+      delete(:remove_coupon, coupon_code: coupon_code)
+    end
   end
 end

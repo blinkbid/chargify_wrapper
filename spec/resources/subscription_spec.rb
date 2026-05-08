@@ -188,4 +188,37 @@ RSpec.describe ChargifyWrapper::Subscription do
       end
     end
   end
+
+  describe "#remove_coupon", :vcr do
+    let(:subscription) { described_class.find(90823390) }
+    let(:url_matcher) do
+      Regexp.new(".chargify.com/subscriptions/#{subscription.id}/remove_coupon\\.json")
+    end
+
+    context "when coupon code is on the subscription" do
+      it "returns Net::HTTPOK",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
+        response = subscription.remove_coupon(coupon_code: "45RDLWDEMNAS")
+
+        expect(response).to be_a(Net::HTTPOK)
+        expect(response.body.strip).to eq("Coupon successfully removed.")
+      end
+
+      it "sends DELETE with coupon_code query param",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
+        subscription.remove_coupon(coupon_code: "45RDLWDEMNAS")
+
+        expect(WebMock).to have_requested(:delete, url_matcher)
+          .with(query: {"coupon_code" => "45RDLWDEMNAS"}).once
+      end
+    end
+
+    context "when coupon code is not on the subscription" do
+      it "raises ActiveResource::ResourceInvalid",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_fails" do
+        expect { subscription.remove_coupon(coupon_code: "NOT_ON_SUB") }
+          .to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+  end
 end
