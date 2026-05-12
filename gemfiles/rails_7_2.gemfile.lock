@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     chargify_wrapper (1.0.0)
       activeresource (~> 6.2)
@@ -143,10 +143,11 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
+  activemodel (~> 7.2.0)
+  activesupport (~> 7.2.0)
   appraisal
   chargify_wrapper!
   dotenv (~> 2.8)

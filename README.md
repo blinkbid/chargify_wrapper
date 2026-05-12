@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Ruby 3.1.3
+Ruby 3.1.6
 
 ## Usage
 
