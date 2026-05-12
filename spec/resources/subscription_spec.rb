@@ -200,7 +200,7 @@ RSpec.describe ChargifyWrapper::Subscription do
     context "when coupon code is on the subscription" do
       it "returns Net::HTTPOK",
         cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
-        response = subscription.remove_coupon(coupon_code: "45RDLWDEMNAS")
+        response = subscription.remove_coupon(code: "45RDLWDEMNAS")
 
         expect(response).to be_a(Net::HTTPOK).and(
           satisfy { |r| r.body.strip == "Coupon successfully removed." }
@@ -209,7 +209,7 @@ RSpec.describe ChargifyWrapper::Subscription do
 
       it "sends DELETE with coupon_code query param",
         cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
-        subscription.remove_coupon(coupon_code: "45RDLWDEMNAS")
+        subscription.remove_coupon(code: "45RDLWDEMNAS")
 
         expect(WebMock).to have_requested(:delete, url_matcher)
           .with(query: {"coupon_code" => "45RDLWDEMNAS"}).once
@@ -219,7 +219,7 @@ RSpec.describe ChargifyWrapper::Subscription do
     context "when coupon code is not on the subscription" do
       it "raises ActiveResource::ResourceInvalid",
         cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_fails" do
-        expect { subscription.remove_coupon(coupon_code: "NOT_ON_SUB") }
+        expect { subscription.remove_coupon(code: "NOT_ON_SUB") }
           .to raise_error(ActiveResource::ResourceInvalid)
       end
     end
