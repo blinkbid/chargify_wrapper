@@ -148,4 +148,80 @@ RSpec.describe ChargifyWrapper::Subscription do
       it { expect { reactivate_subscription }.to raise_error(ActiveResource::ResourceInvalid) }
     end
   end
+
+  describe "#apply_coupons", :vcr do
+    let(:subscription) { described_class.find(90823390) }
+    let(:url_matcher) do
+      Regexp.new(".chargify.com/subscriptions/#{subscription.id}/add_coupon\\.json\\z")
+    end
+
+    context "when codes are empty" do
+      it "raises ActiveResource::ResourceInvalid" do
+        expect { subscription.apply_coupons(codes: []) }.to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+
+    context "when codes are valid" do
+      it "returns Net::HTTPOK" do
+        coupon = "10DAMOUNTCODEYEAR"
+
+        response = subscription.apply_coupons(codes: [coupon])
+
+        expect(response).to be_a(Net::HTTPOK).and(
+          satisfy("include coupon in subscription payload") do |r|
+            payload = JSON.parse(r.body)["subscription"]
+            payload.values_at("coupon_codes", "coupon_code") == [[coupon], coupon]
+          end
+        )
+      end
+
+      it "sends the request correctly" do
+        subscription.apply_coupons(codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS])
+
+        expect(WebMock).to have_requested(:post, url_matcher)
+          .with(body: {codes: %w[25RDGABSKXBZL2 45RDLWDEMNAS]}.to_json).once
+      end
+    end
+
+    context "when codes are invalid" do
+      it "raises ActiveResource::ResourceInvalid" do
+        expect { subscription.apply_coupons(codes: ["INVALID"]) }
+          .to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+  end
+
+  describe "#remove_coupon", :vcr do
+    let(:subscription) { described_class.find(90823390) }
+    let(:url_matcher) do
+      Regexp.new(".chargify.com/subscriptions/#{subscription.id}/remove_coupon\\.json")
+    end
+
+    context "when coupon code is on the subscription" do
+      it "returns Net::HTTPOK",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
+        response = subscription.remove_coupon(code: "45RDLWDEMNAS")
+
+        expect(response).to be_a(Net::HTTPOK).and(
+          satisfy { |r| r.body.strip == "Coupon successfully removed." }
+        )
+      end
+
+      it "sends DELETE with coupon_code query param",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_succeeds" do
+        subscription.remove_coupon(code: "45RDLWDEMNAS")
+
+        expect(WebMock).to have_requested(:delete, url_matcher)
+          .with(query: {"coupon_code" => "45RDLWDEMNAS"}).once
+      end
+    end
+
+    context "when coupon code is not on the subscription" do
+      it "raises ActiveResource::ResourceInvalid",
+        cassette: "chargify_wrapper/subscription_remove_coupon/remove_coupon_fails" do
+        expect { subscription.remove_coupon(code: "NOT_ON_SUB") }
+          .to raise_error(ActiveResource::ResourceInvalid)
+      end
+    end
+  end
 end

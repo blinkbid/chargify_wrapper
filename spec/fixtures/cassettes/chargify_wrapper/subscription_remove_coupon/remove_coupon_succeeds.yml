@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/90823390.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 May 2026 20:41:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-store
+      Etag:
+      - W/"7167cc9a4105544c02db70a1a3726582"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 4234e1dc-44ac-46fc-bb1a-46d7e81cec68
+      X-Runtime:
+      - '0.117763'
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: '{"subscription":{"id":90823390,"state":"trial_ended","trial_started_at":"2026-02-25T19:35:21-08:00","trial_ended_at":"2026-03-11T20:35:21-07:00","activated_at":null,"created_at":"2026-02-25T19:35:21-08:00","updated_at":"2026-05-07T09:11:21-07:00","expires_at":null,"balance_in_cents":0,"current_period_ends_at":null,"next_assessment_at":null,"canceled_at":null,"cancellation_message":"Trial
+        ended on 11 Mar 2026 8:35 PM PDT with no card on file","next_product_id":null,"next_product_handle":null,"cancel_at_end_of_period":false,"payment_collection_method":"automatic","snap_day":null,"cancellation_method":null,"current_period_started_at":null,"previous_state":"trialing","signup_payment_id":1526171986,"signup_revenue":"0.00","delayed_cancel_at":null,"coupon_code":"10DAMOUNTCODEYEAR","total_revenue_in_cents":0,"product_price_in_cents":2800,"product_version_number":1,"payment_type":null,"referral_code":null,"coupon_use_count":0,"coupon_uses_allowed":1,"reason_code":null,"automatically_resume_at":null,"coupon_codes":["10DAMOUNTCODEYEAR","25RDGABSKXBZL2","45RDLWDEMNAS"],"offer_id":null,"payer_id":null,"receives_invoice_emails":null,"product_price_point_id":3218452,"next_product_price_point_id":null,"net_terms":null,"stored_credential_transaction_id":null,"reference":null,"currency":"USD","on_hold_at":null,"scheduled_cancellation_at":null,"product_price_point_type":"default","dunning_communication_delay_enabled":false,"dunning_communication_delay_time_zone":null,"product":{"id":6723193,"name":"Solo-Monthly-T","handle":"solo-monthly-trial","description":"Users:
+        1\r\nPersonalities: 10","accounting_code":"13","request_credit_card":true,"expiration_interval":null,"expiration_interval_unit":"never","created_at":"2024-08-13T09:37:37-07:00","updated_at":"2024-08-13T09:37:37-07:00","price_in_cents":2800,"interval":1,"interval_unit":"month","initial_charge_in_cents":null,"trial_price_in_cents":0,"trial_interval":14,"trial_interval_unit":"day","trial_type":"no_obligation","archived_at":null,"require_credit_card":false,"return_params":"","taxable":false,"update_return_url":"","tax_code":"","initial_charge_after_trial":false,"version_number":1,"update_return_params":"","default_product_price_point_id":3218452,"request_billing_address":false,"require_billing_address":false,"require_shipping_address":false,"use_site_exchange_rate":true,"item_category":null,"product_price_point_id":3218452,"product_price_point_name":"New
+        Price May 2021","product_price_point_handle":"uuid:2feeb150-8c25-0139-e08c-06de0fa030d9","product_family":{"id":2682583,"name":"Blinkbid
+        - USA","description":"Blinkbid software sold in the United States, in USD
+        currency.","handle":"blinkbid-usa","accounting_code":null,"created_at":"2024-08-13T09:37:37-07:00","updated_at":"2024-08-13T09:37:37-07:00","archived_at":null},"public_signup_pages":[]},"current_billing_amount_in_cents":1155,"customer":{"id":94888728,"first_name":"Testing","last_name":"Spec","organization":null,"email":"edited_solo_monthly@test.com","created_at":"2026-02-25T19:35:21-08:00","updated_at":"2026-02-25T19:35:21-08:00","reference":null,"address":null,"address_2":null,"address_3":null,"city":null,"state":null,"state_name":null,"zip":null,"country":null,"country_name":null,"phone":null,"portal_invite_last_sent_at":null,"portal_invite_last_accepted_at":null,"verified":false,"portal_customer_created_at":null,"vat_number":null,"vat_country":null,"vat_status":"not_verified","vat_validated_at":null,"cc_emails":null,"tax_exempt":false,"tax_exempt_reason":null,"parent_id":null,"salesforce_id":null,"business_type":null,"maxioid":null}}}'
+  recorded_at: Fri, 08 May 2026 20:41:41 GMT
+- request:
+    method: delete
+    uri: https://<CHARGIFY_SUBDOMAIN>.chargify.com/subscriptions/90823390/remove_coupon.json?coupon_code=45RDLWDEMNAS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - "<CHARGIFY_API_KEY>"
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 May 2026 20:41:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private, no-store
+      Etag:
+      - W/"f864722e0804e343288700b3fa6d8d85"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Server:
+      - nginx + Phusion Passenger(R)
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Powered-By:
+      - Phusion Passenger(R) Enterprise
+      X-Request-Id:
+      - 82f8121e-c49a-4429-a432-6d6b9a9dd789
+      X-Runtime:
+      - '0.031993'
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: UTF-8
+      string: Coupon successfully removed.
+  recorded_at: Fri, 08 May 2026 20:41:42 GMT
+recorded_with: VCR 6.2.0
