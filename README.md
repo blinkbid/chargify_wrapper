@@ -17,10 +17,14 @@ After setting up those values, you can perform actions using the `ChargifyWrappe
 
 ## Development
 
-Run bundle install
+We support rails 7.0, 7.1 and 7.2 currently.
+
+To install the dependencies for them, run the following:
 ```
 bundle install
+bundle exec appraisal install
 ```
+
 ### Use gem locally
 
 1. Uninstall previous versions

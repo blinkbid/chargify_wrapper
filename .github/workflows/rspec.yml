@@ -6,24 +6,61 @@ on:
       - main
 
 jobs:
+  matrix:
+    runs-on: ubuntu-latest
+
+    outputs:
+      appraisals: ${{ steps.appraisals.outputs.json }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.6
+          bundler-cache: true
+
+      - id: appraisals
+        name: Load appraisal matrix
+        run: |
+          APPRAISALS=$(
+            bundle exec appraisal list \
+              | ruby -rjson -e 'puts JSON.generate(STDIN.read.lines.map(&:strip).reject(&:empty?))'
+          )
+
+          echo "json=$APPRAISALS" >> $GITHUB_OUTPUT
+
   build:
+    needs: matrix
     runs-on: ubuntu-latest
     name: Specs
+
     strategy:
+      fail-fast: false
+
       matrix:
         ruby:
           - '3.1.6'
+
+        appraisal: ${{ fromJson(needs.matrix.outputs.appraisals) }}
 
     env:
       SUBDOMAIN: ${{ secrets.SUBDOMAIN }}
       API_KEY: ${{ secrets.API_KEY }}
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run specs
-      run: bundle exec rspec
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Generate appraisal gemfiles
+        run: bundle exec appraisal install
+
+      - name: Run specs for ${{ matrix.appraisal }}
+        run: |
+          bundle exec appraisal ${{ matrix.appraisal }} rake spec
